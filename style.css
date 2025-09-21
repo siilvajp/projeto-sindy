@@ -191,27 +191,36 @@ main section:not(:last-child) {
 /* =============================================== */
 /* Galeria de Imagens Padronizada                  */
 /* =============================================== */
-.gallery-grid {
+/* NOVA ESTRUTURA PARA A GALERIA DE VÍDEOS */
+.video-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    gap: 10px;
+    /* Cria colunas flexíveis com um tamanho máximo, impedindo que fiquem muito largas */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    /* Centraliza a grade inteira se houver espaço sobrando (ex: em telas ultrawide) */
+    justify-content: auto;
 }
 
-.gallery-grid img {
+.video-container { 
+    position: relative;
+    padding-bottom: 177.77%; /* Proporção de 9:16 para vídeos verticais */
+    height: 0; 
+    overflow: hidden; 
+    /* NOVO: Define a largura e a largura MÁXIMA para controlar o tamanho */
     width: 100%;
-    height: 100%;
-    aspect-ratio: 1 / 1;
-    object-fit: cover;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
-    filter: brightness(0.9); /* Escurece levemente as imagens para combinar com o tema */
+    max-width: 360px; /* Impede que o vídeo estique em telas largas */
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    border: 3px solid rgba(255, 255, 255, 0.1);
+    background-color: #000;
 }
 
-.gallery-grid img:hover {
-    transform: scale(1.05);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.4);
-    filter: brightness(1.1);
+.video-container iframe { 
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%; 
 }
 
 /* =============================================== */
@@ -349,6 +358,7 @@ footer { text-align: center; padding: 20px; background-color: var(--secondary-co
     h1 { font-size: 3.5rem; }
     .gallery-grid { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 15px; }
 }
+
 
 
 
