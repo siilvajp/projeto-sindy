@@ -1,13 +1,104 @@
 /* =============================================== */
-/* Estilos Base (Mobile-First)                     */
+/* Estilos do Modal de Senha                       */
 /* =============================================== */
+.password-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    background-color: rgba(10, 10, 20, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    transition: opacity 0.5s ease-out;
+}
 
+.password-modal {
+    background-color: rgba(20, 20, 30, 0.8);
+    padding: 30px 40px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.password-modal.shake {
+    animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    20%, 60% { transform: translateX(-10px); }
+    40%, 80% { transform: translateX(10px); }
+}
+
+.password-modal h2 {
+    color: var(--hero-title-color);
+    margin-bottom: 10px;
+}
+
+.password-modal p {
+    margin-bottom: 20px;
+    font-size: 1rem;
+}
+
+#password-form input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background-color: rgba(0,0,0,0.3);
+    color: white;
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+#password-form button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--accent-color);
+    color: var(--secondary-color);
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#password-form button:hover {
+    background-color: #b99a9a;
+}
+
+.error-message {
+    color: #ff8a8a;
+    font-size: 0.9rem !important;
+    margin-top: 10px;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.error-message.visible {
+    visibility: visible;
+    opacity: 1;
+}
+
+
+/* =============================================== */
+/* Estilos Base e Efeitos Visuais (Tema Escuro)    */
+/* =============================================== */
 :root {
-    --primary-color: #333;
-    --secondary-color: #f4f4f4;
-    --accent-color: #d1b4b4;
-    --text-color: #555;
-    --bg-color: #ffffff;
+    --primary-color: #FFFFFF; /* Cor primária para títulos (branco) */
+    --secondary-color: #10101c; /* Cor de fundo para seções como o rodapé */
+    --accent-color: #d1b4b4; /* Cor de destaque (rosa pálido) */
+    --text-color: #EAEAEA;   /* Cor do texto principal (branco acinzentado) */
+    --bg-color: #0A0A14;       /* Cor de fundo principal (azul escuro espacial) */
+    --hero-title-color: #FFFACD; /* Cor especial para o título principal (amarelo claro estelar) */
 }
 
 * {
@@ -18,36 +109,58 @@
 
 body {
     font-family: 'Poppins', sans-serif;
-    line-height: 1.7; /* Aumentado para melhor legibilidade em telas pequenas */
+    line-height: 1.7;
     color: var(--text-color);
-    background-color: var(--bg-color);
+    background-color: var(--bg-color); /* Cor de fallback */
+    background-image: linear-gradient(rgba(10, 10, 20, 0.6), rgba(10, 10, 20, 0.6)), url('assets/images/saturno.png');
+    background-size: cover;
+    background-position: center center;
+    background-attachment: scroll; 
+    overflow: hidden; /* Trava o scroll enquanto o modal está ativo */
 }
 
-/* Tipografia Mobile */
 h1, h2, h3 {
     font-family: 'Playfair Display', serif;
     color: var(--primary-color);
     margin-bottom: 1rem;
 }
-
-h1 { font-size: 2.8rem; } /* Ajustado para caber bem em telas de celular */
+h1 { font-size: 2.8rem; }
 h2 { font-size: 2.2rem; text-align: center; margin-bottom: 2rem; }
 h3 { font-size: 1.4rem; }
-p { font-size: 1.1rem; } /* Ligeiramente maior para conforto na leitura */
-
+p { font-size: 1.1rem; }
 
 /* Cabeçalho (Hero Section) */
 .hero {
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('assets/images/foto-casal-fundo.jpg'); /* Substitua por uma foto de fundo bonita */
-    background-size: cover;
-    background-position: center;
-    color: white;
-    height: 90vh; /* Ligeiramente menor para ver que há conteúdo abaixo */
+    position: relative; /* Necessário para o pseudo-elemento */
+    color: var(--text-color);
+    height: 90vh;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
     padding: 0 20px;
+    overflow: hidden; /* Garante que o blur não vaze */
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: -5%; /* Ajuste para cobrir completamente */
+    left: -5%; /* Ajuste para cobrir completamente */
+    width: 110%; /* Aumentado para garantir que o blur não deixe bordas */
+    height: 110%; /* Aumentado para garantir que o blur não deixe bordas */
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('assets/images/fundo.png');
+    background-size: cover;
+    background-position: center;
+    filter: blur(0.5px); /* Aumenta um pouco o blur para um efeito mais suave */
+    z-index: -1;
+}
+
+
+/* Destaque para o "Para Sindy" */
+.hero h1 {
+    color: var(--hero-title-color);
+    text-shadow: 0 0 8px rgba(255, 250, 205, 0.7), 0 0 12px rgba(240, 230, 140, 0.5);
 }
 
 .hero-content .date {
@@ -56,122 +169,165 @@ p { font-size: 1.1rem; } /* Ligeiramente maior para conforto na leitura */
     margin-top: 1rem;
 }
 
-/* Seções Principais */
+main {
+    padding-top: 40px; /* Garante o espaçamento correto entre o hero e a primeira seção */
+}
+
 main section {
     padding: 50px 20px;
-    max-width: 900px;
-    margin: 0 auto;
+    max-width: 1100px;
+    margin: 0;
+    background-color: rgba(10, 10, 20, 0.65); /* Aumenta a opacidade para melhor legibilidade */
+    backdrop-filter: blur(5px); /* Aumenta o blur para o efeito de vidro */
+    border-radius: 25px;
+    margin-top: 30px;
 }
 
-/* Linha do Tempo (Layout Mobile) */
-.timeline {
-    position: relative;
-    padding-left: 30px; /* Espaço para a linha vertical */
+/* Adiciona margem inferior para espaçamento consistente */
+main section:not(:last-child) {
+    margin-bottom: 40px;
 }
 
-.timeline::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 10px; /* Linha à esquerda, simples e limpo */
-    width: 2px;
-    height: 100%;
-    background-color: var(--accent-color);
-}
-
-.timeline-item {
-    margin-bottom: 30px;
-    position: relative;
-}
-
-.timeline-date {
-    font-weight: bold;
-    color: var(--accent-color);
-    margin-bottom: 8px;
-}
-
-/* Galeria de Imagens (Layout Mobile) */
+/* =============================================== */
+/* Galeria de Imagens Padronizada                  */
+/* =============================================== */
 .gallery-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 2 colunas para mobile, visualmente agradável */
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     gap: 10px;
 }
 
 .gallery-grid img {
     width: 100%;
     height: 100%;
+    aspect-ratio: 1 / 1;
     object-fit: cover;
     border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+    filter: brightness(0.9); /* Escurece levemente as imagens para combinar com o tema */
 }
 
-
-/* Seção de Vídeo */
-.video-container {
-    position: relative;
-    padding-bottom: 56.25%; /* Proporção 16:9 */
-    height: 0;
-    overflow: hidden;
-    max-width: 100%;
-    background: #000;
-    border-radius: 8px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+.gallery-grid img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+    filter: brightness(1.1);
 }
 
-.video-container iframe {
-    position: absolute;
-    top: 0;
+/* =============================================== */
+/* Estilos do Lightbox (Álbum Interativo)          */
+/* =============================================== */
+.lightbox {
+    position: fixed;
+    z-index: 1000;
     left: 0;
+    top: 0;
     width: 100%;
     height: 100%;
+    background-color: rgba(0, 0, 0, 0.85);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
 }
 
-/* Mensagem Final e Rodapé */
-.message {
-    text-align: center;
-    font-style: italic;
-    font-size: 1.2rem;
+.lightbox.active {
+    opacity: 1;
+    pointer-events: all;
 }
 
-footer {
-    text-align: center;
-    padding: 20px;
-    background-color: var(--secondary-color);
-    color: var(--text-color);
+.lightbox-content {
+    max-width: 90vw;
+    max-height: 85vh;
+    object-fit: contain;
+    border-radius: 5px;
+    transition: transform 0.3s ease;
+    transform: scale(0.8);
+}
+
+.lightbox.active .lightbox-content {
+    transform: scale(1);
+}
+
+.close-button {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close-button:hover {
+    color: var(--accent-color);
+}
+
+.prev-button, .next-button {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: auto;
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 24px;
+    transition: 0.3s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+}
+
+.prev-button {
+    left: 10px;
+    border-radius: 3px 0 0 3px;
+}
+
+.next-button {
+    right: 10px;
+}
+
+.prev-button:hover, .next-button:hover {
+    background-color: rgba(255, 255, 255, 0.2);
 }
 
 /* =============================================== */
-/* Estilos para Telas Maiores (Tablets e Desktops) */
+/* Seções Finais e Responsividade                  */
 /* =============================================== */
+.video-section { margin-top: 0; } /* Resetado para ser controlado pelo main */
+.message, footer { margin-top: 0; }
+
+.video-container { 
+    position: relative;
+    padding-bottom: 177.77%; /* Proporção de 9:16 para vídeos verticais */
+    height: 0; 
+    overflow: hidden; 
+    max-width: 360px; /* Simula a largura de um celular */
+    margin: 0 auto; /* Centraliza o container */
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    border: 3px solid rgba(255, 255, 255, 0.1);
+}
+.video-container iframe { 
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%; 
+}
+.message { text-align: center; font-style: italic; font-size: 1.2rem; }
+footer { text-align: center; padding: 20px; background-color: var(--secondary-color); color: var(--text-color); }
 
 @media (min-width: 768px) {
-    /* Tipografia Desktop */
+    body {
+        /* Reativa o efeito parallax apenas em telas maiores */
+        background-attachment: fixed;
+    }
+
     h1 { font-size: 3.5rem; }
-    h2 { font-size: 2.5rem; }
-    p { font-size: 1rem; } /* Retorna ao padrão em telas maiores */
-
-    .hero {
-        height: 100vh;
-    }
-
-    /* Linha do Tempo (Layout Desktop - Centralizado) */
-    .timeline {
-        padding-left: 0; /* Remove o padding da versão mobile */
-    }
-
-    .timeline::before {
-        left: 50%; /* Centraliza a linha */
-        transform: translateX(-50%);
-    }
-
-    /* Galeria de Imagens (Layout Desktop) */
-    .gallery-grid {
-        grid-template-columns: repeat(3, 1fr); /* 3 colunas para desktop */
-        gap: 15px;
-    }
-    
-    .gallery-grid img:hover {
-        transform: scale(1.05);
-        box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
+    .gallery-grid { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 15px; }
 }
+
