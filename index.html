@@ -11,76 +11,126 @@
 </head>
 <body>
 
+    <!-- Modal de Senha -->
+    <div id="password-overlay" class="password-overlay">
+        <div id="password-modal" class="password-modal">
+            <h2>Acesso Restrito</h2>
+            <p>Por favor, insira a data especial.</p>
+            <form id="password-form">
+                <input type="password" id="password-input" placeholder="DD.MM" autofocus autocomplete="off">
+                <button type="submit">Entrar</button>
+                <p id="error-message" class="error-message">Senha incorreta.</p>
+            </form>
+        </div>
+    </div>
+
     <header class="hero">
         <div class="hero-content">
             <h1>Para Sindy</h1>
-            <p>Uma pequena lembrança de tudo que construímos juntos.</p>
-            <p class="date">Desde [Data do Início do Namoro]</p>
+            <p class="date">De 18/03/2021 para sempre</p>
         </div>
     </header>
 
     <main>
-        <section class="timeline">
-            <h2>Nossa Linha do Tempo</h2>
-            <div class="timeline-item">
-                <div class="timeline-date">[Data do Primeiro Encontro]</div>
-                <div class="timeline-content">
-                    <h3>O Início de Tudo</h3>
-                    <p>Aqui você pode descrever o primeiro encontro, a primeira impressão, ou qualquer memória especial daquele dia. Foi aqui que nossa jornada começou.</p>
-                </div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-date">[Data de uma Viagem]</div>
-                <div class="timeline-content">
-                    <h3>Nossa Primeira Viagem</h3>
-                    <p>Lembranças daquela viagem inesquecível para [Lugar]. As risadas, as paisagens e os momentos que guardaremos para sempre.</p>
-                </div>
-            </div>
-             <div class="timeline-item">
-                <div class="timeline-date">[Data Atual]</div>
-                <div class="timeline-content">
-                    <h3>Hoje e Sempre</h3>
-                    <p>E aqui estamos, construindo nosso futuro. Cada dia ao seu lado é um novo capítulo da nossa linda história.</p>
-                </div>
-            </div>
-        </section>
-
         <section class="gallery">
             <h2>Galeria de Momentos</h2>
             <div class="gallery-grid">
-                <img src="assets/images/foto1.jpg" alt="Descrição da foto 1">
-                <img src="assets/images/foto2.jpg" alt="Descrição da foto 2">
-                <img src="assets/images/foto3.jpg" alt="Descrição da foto 3">
-                <img src="assets/images/foto4.jpg" alt="Descrição da foto 4">
-                <img src="assets/images/foto5.jpg" alt="Descrição da foto 5">
-                <img src="assets/images/foto6.jpg" alt="Descrição da foto 6">
+                <!-- Imagens da galeria -->
+                <img src="assets/images/01.jpg" alt="Descrição da foto 1">
+                <img src="assets/images/02.jpg" alt="Descrição da foto 2">
+                <img src="assets/images/03.jpg" alt="Descrição da foto 3">
+                <img src="assets/images/04.jpg" alt="Descrição da foto 4">
+                <img src="assets/images/05.jpg" alt="Descrição da foto 5">
+                <img src="assets/images/06.jpg" alt="Descrição da foto 6">
+                <img src="assets/images/07.jpg" alt="Descrição da foto 7">
+                <img src="assets/images/08.jpg" alt="Descrição da foto 8">
+                <img src="assets/images/09.jpg" alt="Descrição da foto 9">
+                <img src="assets/images/10.jpg" alt="Descrição da foto 10">
+                <img src="assets/images/11.jpg" alt="Descrição da foto 11">
+                <img src="assets/images/12.jpg" alt="Descrição da foto 12">
+                <img src="assets/images/13.jpg" alt="Descrição da foto 13">
+                <img src="assets/images/14.jpg" alt="Descrição da foto 14">
+                <img src="assets/images/15.jpg" alt="Descrição da foto 15">
+                <img src="assets/images/16.jpg" alt="Descrição da foto 16">
+                <img src="assets/images/17.jpg" alt="Descrição da foto 17">
+                <img src="assets/images/18.jpg" alt="Descrição da foto 18">
+                <img src="assets/images/19.jpg" alt="Descrição da foto 19">
+                <img src="assets/images/20.jpg" alt="Descrição da foto 20">
+                <img src="assets/images/21.jpg" alt="Descrição da foto 21">
+                <img src="assets/images/22.jpg" alt="Descrição da foto 22">
             </div>
         </section>
 
         <section class="video-section">
-            <h2>Um Vídeo Para Você</h2>
-            <div class="video-container">
-                <iframe 
-                    src="https://www.youtube.com/embed/SEU_CODIGO_DO_VIDEO" 
-                    title="YouTube video player" 
-                    frameborder="0" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowfullscreen>
-                </iframe>
+            <h2>Um Pouco Mais de Nós</h2>
+            <div class="video-grid">
+                <!-- Vídeo 1 -->
+                <div class="video-container">
+                    <iframe src="https://player.vimeo.com/video/1120525556?title=0&byline=0&portrait=0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <br>
+                <!-- Vídeo 2 -->
+                <div class="video-container">
+                    <iframe src="https://player.vimeo.com/video/1120525549?title=0&byline=0&portrait=0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <br>
+                <!-- Vídeo 3 -->
+                <div class="video-container">
+                    <iframe src="https://player.vimeo.com/video/1120525545?title=0&byline=0&portrait=0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <br>
+                <!-- Vídeo 4 -->
+                <div class="video-container">
+                    <iframe src="https://player.vimeo.com/video/1120525540?title=0&byline=0&portrait=0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <!-- Vídeo 5 -->
+                 <br>
+                <div class="video-container">
+                    <iframe src="https://player.vimeo.com/video/1120525538?title=0&byline=0&portrait=0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <!-- Vídeo 6 -->
+                 <br>
+                <div class="video-container">
+                    <iframe src="https://player.vimeo.com/video/1120525527?title=0&byline=0&portrait=0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+                </div>
             </div>
         </section>
 
+
         <section class="message">
-            <h2>De [Nome do Seu Amigo]</h2>
-            <p>
-                "Aqui vai a mensagem principal, a declaração de amor. Pode ser um texto longo e emocionante, expressando todos os sentimentos. Este é o coração do site."
+            <h2 style="font-size: 30px;">Para minha preta 📌💌</h2>
+            <p style="font-size: 15px; line-height: 1.6; margin-top: 20px;">
+                "Minha mente nem sempre tão lúcida<br>
+                É fértil e me deu a voz<br>
+                Minha mente nem sempre tão lúcida<br>
+                Fez ela se afastar<br>
+                Mas ela vai voltar<br>
+                Mas ela vai voltar<br>
+                Deixa eu te levar pra ver o mundo, baby<br>
+                Deixa eu te mostrar o melhor que eu posso ser<br>
+                Deixa eu te levar pra ver o mundo, baby<br>
+                Deixa eu te mostrar o melhor que eu posso ser"
+                <br><br>
+                CBj~
             </p>
         </section>
     </main>
 
     <footer>
-        <p>Feito com ❤️ por [Nome do Seu Amigo]</p>
+        <p>Feito com ❤️ por Miltin</p>
     </footer>
+
+    <!-- Estrutura do Lightbox (inicialmente invisível) -->
+    <div id="lightbox" class="lightbox">
+        <span class="close-button">&times;</span>
+        <img class="lightbox-content" id="lightbox-image">
+        <a class="prev-button">&#10094;</a>
+        <a class="next-button">&#10095;</a>
+    </div>
+
+    <!-- Importa o JavaScript para o Lightbox -->
+    <script src="script.js"></script>
 
 </body>
 </html>
+
