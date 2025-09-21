@@ -328,7 +328,7 @@ main section:not(:last-child) {
 .video-container video {
     width: 100%;
     height: 100%;
-    /* display: block; Remove espaços extras indesejados */
+    display: block; /* Remove espaços extras indesejados */
 }
 .video-container iframe { 
     position: absolute; 
@@ -349,4 +349,5 @@ footer { text-align: center; padding: 20px; background-color: var(--secondary-co
     h1 { font-size: 3.5rem; }
     .gallery-grid { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 15px; }
 }
+
 
