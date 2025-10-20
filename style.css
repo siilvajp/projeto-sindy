@@ -150,14 +150,6 @@ main section {
 }
 
 /* =============================================== */
-/* Ajuste de Nitidez para a Seção de Vídeos      */
-/* =============================================== */
-.video-section {
-    backdrop-filter: none; /* Remove o desfoque do fundo */
-    background-color: rgba(10, 10, 20, 0.8); /* Aumenta a opacidade para garantir legibilidade */
-}
-
-/* =============================================== */
 /* Estilos do Lightbox (Álbum Interativo)          */
 /* =============================================== */
 .lightbox {
@@ -200,5 +192,12 @@ footer { text-align: center; padding: 20px; background-color: var(--secondary-co
     .gallery-grid { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 15px; }
 }
 
-
+/* ============================================================= */
+/* Ajuste de Nitidez para a Seção de Vídeos (v2.0)             */
+/* ============================================================= */
+/* Usando seletor mais específico para garantir a prioridade */
+main section.video-section {
+    backdrop-filter: blur(1px); /* Reduz o desfoque para um nível mínimo (aprox. 10%) */
+    background-color: rgba(10, 10, 20, 0.8); /* Mantém opacidade para garantir legibilidade */
+}
 
