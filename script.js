@@ -1,107 +1,91 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nossa História</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
-</head>
-<body>
+document.addEventListener('DOMContentLoaded', () => {
+    // =============================================
+    // LÓGICA DO LIGHTBOX (ÁLBUM DE FOTOS)
+    // =============================================
+    const galleryImages = document.querySelectorAll('.gallery-grid img');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImage = document.getElementById('lightbox-image');
+    const closeButton = document.querySelector('.close-button');
+    const prevButton = document.querySelector('.prev-button');
+    const nextButton = document.querySelector('.next-button');
 
-    <header class="hero">
-        <div class="hero-content">
-            <h1>Para Sindy</h1>
-            <p class="date">De 18/03/2021 para sempre</p>
-        </div>
-    </header>
+    // Verificação de segurança para garantir que todos os elementos existem
+    if (!lightbox || !lightboxImage || !closeButton || !prevButton || !nextButton) {
+        console.error('Elementos do Lightbox não encontrados. Verifique os IDs e classes no HTML.');
+        return;
+    }
 
-    <main>
-        <section class="gallery">
-            <h2>Galeria de Momentos</h2>
-            <div class="gallery-grid">
-                <img src="assets/images/01.jpg" alt="Sindy e Miltin abraçados em uma viagem" loading="lazy">
-                <img src="assets/images/02.jpg" alt="Casal sorrindo durante um jantar romântico" loading="lazy">
-                <img src="assets/images/03.jpg" alt="Foto em uma paisagem natural com montanhas" loading="lazy">
-                <img src="assets/images/04.jpg" alt="Momento descontraído em casa" loading="lazy">
-                <img src="assets/images/05.jpg" alt="Sindy sorrindo para a câmera" loading="lazy">
-                <img src="assets/images/06.jpg" alt="Miltin olhando para Sindy" loading="lazy">
-                <img src="assets/images/07.jpg" alt="Foto de uma comemoração especial" loading="lazy">
-                <img src="assets/images/08.jpg" alt="Viagem para a praia" loading="lazy">
-                <img src="assets/images/09.jpg" alt="Selfie do casal" loading="lazy">
-                <img src="assets/images/10.jpg" alt="Foto em uma festa com amigos" loading="lazy">
-                <img src="assets/images/11.jpg" alt="Passeio em um parque" loading="lazy">
-                <img src="assets/images/12.jpg" alt="Brinde em um restaurante" loading="lazy">
-                <img src="assets/images/13.jpg" alt="Foto antiga do início do namoro" loading="lazy">
-                <img src="assets/images/14.jpg" alt="Detalhe de um presente trocado" loading="lazy">
-                <img src="assets/images/15.jpg" alt="Olhares apaixonados" loading="lazy">
-                <img src="assets/images/16.jpg" alt="Caminhada ao ar livre" loading="lazy">
-                <img src="assets/images/17.jpg" alt="Noite de filmes e pipoca" loading="lazy">
-                <img src="assets/images/18.jpg" alt="Retrato de Sindy" loading="lazy">
-                <img src="assets/images/19.jpg" alt="Retrato de Miltin" loading="lazy">
-                <img src="assets/images/20.jpg" alt="Momento especial de aniversário" loading="lazy">
-                <img src="assets/images/21.jpg" alt="Viagem de fim de semana" loading="lazy">
-                <img src="assets/images/22.jpg" alt="Foto favorita do casal" loading="lazy">
-            </div>
-        </section>
+    let currentImageIndex;
 
-        <section class="video-section">
-            <h2>Um Pouco Mais de Nós</h2>
-            <div class="video-grid">
-                <div class="video-container">
-                    <iframe src="https://player.vimeo.com/video/1120525556?title=0&byline=0&portrait=0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-                </div>
-                <div class="video-container">
-                    <iframe src="https://player.vimeo.com/video/1120525549?title=0&byline=0&portrait=0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-                </div>
-                <div class="video-container">
-                    <iframe src="https://player.vimeo.com/video/1120525545?title=0&byline=0&portrait=0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-                </div>
-                <div class="video-container">
-                    <iframe src="https://player.vimeo.com/video/1120525540?title=0&byline=0&portrait=0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-                </div>
-                <div class="video-container">
-                    <iframe src="https://player.vimeo.com/video/1120525538?title=0&byline=0&portrait=0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-                </div>
-                <div class="video-container">
-                    <iframe src="https://player.vimeo.com/video/1120525527?title=0&byline=0&portrait=0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-                </div>
-            </div>
-        </section>
+    const openLightbox = (index) => {
+        currentImageIndex = index;
+        lightboxImage.src = galleryImages[currentImageIndex].src;
+        lightbox.classList.add('active');
+        // Trava o scroll do body enquanto o lightbox estiver ativo
+        document.body.style.overflow = 'hidden';
+    };
 
-        <section class="message">
-            <h2 style="font-size: 30px;">Para minha preta 📌💌</h2>
-            <p style="font-size: 15px; line-height: 1.6; margin-top: 20px;">
-                "Minha mente nem sempre tão lúcida<br>
-                É fértil e me deu a voz<br>
-                Minha mente nem sempre tão lúcida<br>
-                Fez ela se afastar<br>
-                Mas ela vai voltar<br>
-                Mas ela vai voltar<br>
-                Deixa eu te levar pra ver o mundo, baby<br>
-                Deixa eu te mostrar o melhor que eu posso ser<br>
-                Deixa eu te levar pra ver o mundo, baby<br>
-                Deixa eu te mostrar o melhor que eu posso ser"
-                <br><br>
-                CBj~
-            </p>
-        </section>
-    </main>
+    const closeLightbox = () => {
+        lightbox.classList.remove('active');
+        // Libera o scroll do body
+        document.body.style.overflow = 'auto';
+    };
 
-    <footer>
-        <p>Feito com ❤️ por Miltin</p>
-    </footer>
+    const showPrevImage = () => {
+        currentImageIndex = (currentImageIndex - 1 + galleryImages.length) % galleryImages.length;
+        lightboxImage.src = galleryImages[currentImageIndex].src;
+    };
 
-    <div id="lightbox" class="lightbox">
-        <span class="close-button">&times;</span>
-        <img class="lightbox-content" id="lightbox-image">
-        <a class="prev-button">&#10094;</a>
-        <a class="next-button">&#10095;</a>
-    </div>
+    const showNextImage = () => {
+        currentImageIndex = (currentImageIndex + 1) % galleryImages.length;
+        lightboxImage.src = galleryImages[currentImageIndex].src;
+    };
 
-    <script src="script.js"></script>
+    galleryImages.forEach((img, index) => {
+        img.addEventListener('click', () => openLightbox(index));
+    });
 
-</body>
-</html>
+    closeButton.addEventListener('click', closeLightbox);
+    
+    // Fecha o lightbox se clicar fora da imagem
+    lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) {
+            closeLightbox();
+        }
+    });
+
+    prevButton.addEventListener('click', showPrevImage);
+    nextButton.addEventListener('click', showNextImage);
+
+    // Navegação pelo teclado
+    document.addEventListener('keydown', (e) => {
+        if (lightbox.classList.contains('active')) {
+            if (e.key === 'ArrowLeft') showPrevImage();
+            if (e.key === 'ArrowRight') showNextImage();
+            if (e.key === 'Escape') closeLightbox();
+        }
+    });
+
+    // Navegação por swipe em telas touch
+    let touchstartX = 0;
+    let touchendX = 0;
+
+    const handleSwipe = () => {
+        const swipeThreshold = 50; // Mínimo de pixels para considerar um swipe
+        if (touchendX < touchstartX - swipeThreshold) {
+            showNextImage();
+        }
+        if (touchendX > touchstartX + swipeThreshold) {
+            showPrevImage();
+        }
+    };
+
+    lightbox.addEventListener('touchstart', e => {
+        touchstartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    lightbox.addEventListener('touchend', e => {
+        touchendX = e.changedTouches[0].screenX;
+        handleSwipe();
+    });
+});
